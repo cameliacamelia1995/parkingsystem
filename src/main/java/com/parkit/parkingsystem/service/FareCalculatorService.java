@@ -7,6 +7,9 @@ import com.parkit.parkingsystem.model.Ticket;
 public class FareCalculatorService {
     private TicketDAO ticketDAO;
 
+    public FareCalculatorService() {
+    }
+
     public void calculateFare(Ticket ticket){
         if( (ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime())) ){
             throw new IllegalArgumentException("Out time provided is incorrect:"+ticket.getOutTime().toString());
@@ -16,9 +19,12 @@ public class FareCalculatorService {
         double hours = (outHour - inHour)/1000/60; //difference between in and out dates in minutes
         double duration = (double)hours/60; //converts duration into hours
 //
-        double ratio = 1;
-        if() {
+        double ratio;
+        int reduction = this.ticketDAO.countNumberPlate(ticket.getVehicleRegNumber());
+        if(reduction > 1) {
             ratio = 0.95;
+        } else {
+            ratio = 1;
         }
         switch (ticket.getParkingSpot().getParkingType()){
             case CAR: {
@@ -33,6 +39,6 @@ public class FareCalculatorService {
         }
         if(duration < 0.5) {
             ticket.setPrice(0);
+            System.out.println("Ticket gratuit");
         }
-    }
-}
+    }}

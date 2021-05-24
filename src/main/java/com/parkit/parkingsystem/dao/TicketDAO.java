@@ -90,7 +90,7 @@ public class TicketDAO {
             try {
                 con = dataBaseConfig.getConnection();
                 PreparedStatement ps = con.prepareStatement(DBConstants.COUNT_NUMBER_PLATE);
-                ps.setString(count, vehicleRegNumber);
+                ps.setString(1, vehicleRegNumber);
                 ps.execute();
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
