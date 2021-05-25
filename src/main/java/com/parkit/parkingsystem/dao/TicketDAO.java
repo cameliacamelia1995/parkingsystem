@@ -55,6 +55,11 @@ public class TicketDAO {
                 ticket.setPrice(rs.getDouble(3));
                 ticket.setInTime(rs.getTimestamp(4));
                 ticket.setOutTime(rs.getTimestamp(5));
+                if (countNumberPlate(vehicleRegNumber)> 1){ // Si plaque d'immatriculation est présente + d'une fois
+                    ticket.setRecurrentUsers(true); //utilisateur récurrent
+
+                }
+
             }
             dataBaseConfig.closeResultSet(rs);
             dataBaseConfig.closePreparedStatement(ps);
@@ -84,17 +89,18 @@ public class TicketDAO {
         return false;
 
     }
-    public int countNumberPlate (String vehicleRegNumber) {
+    //méthode qui sert a compter le nb de plaque d'immatriculation
+    public int countNumberPlate(String vehicleRegNumber) {
         Connection con = null;
         int count = 0;
             try {
                 con = dataBaseConfig.getConnection();
                 PreparedStatement ps = con.prepareStatement(DBConstants.COUNT_NUMBER_PLATE);
-                ps.setString(1, vehicleRegNumber);
+                ps.setString(1, vehicleRegNumber); //1 = premier paramètre
                 ps.execute();
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    count = rs.getInt(1);
+                    count = rs.getInt(1); //1 = obtenir le premier champs en int
                 }
                 dataBaseConfig.closeResultSet(rs);
                 dataBaseConfig.closePreparedStatement(ps);

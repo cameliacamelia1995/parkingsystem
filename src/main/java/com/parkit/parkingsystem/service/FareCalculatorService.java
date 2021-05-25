@@ -5,10 +5,6 @@ import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.model.Ticket;
 
 public class FareCalculatorService {
-    private TicketDAO ticketDAO;
-
-    public FareCalculatorService() {
-    }
 
     public void calculateFare(Ticket ticket){
         if( (ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime())) ){
@@ -20,8 +16,8 @@ public class FareCalculatorService {
         double duration = (double)hours/60; //converts duration into hours
 //
         double ratio;
-        int reduction = this.ticketDAO.countNumberPlate(ticket.getVehicleRegNumber());
-        if(reduction > 1) {
+        boolean reduction = ticket.isRecurrentUsers(); //boolean si l'utilisateur est récurent
+        if(reduction) {
             ratio = 0.95;
         } else {
             ratio = 1;
