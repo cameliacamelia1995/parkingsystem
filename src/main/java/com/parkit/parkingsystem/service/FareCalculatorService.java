@@ -1,8 +1,10 @@
 package com.parkit.parkingsystem.service;
 
 import com.parkit.parkingsystem.constants.Fare;
-import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.model.Ticket;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class FareCalculatorService {
 
@@ -21,20 +23,25 @@ public class FareCalculatorService {
             ratio = 0.95;
         } else {
             ratio = 1;
+            System.out.println("Welcome back ! As a recurrent user of our parking lot, you'll benefit from a 5% discount");
         }
         switch (ticket.getParkingSpot().getParkingType()){
             case CAR: {
-                ticket.setPrice(duration * Fare.CAR_RATE_PER_HOUR * ratio);
+                double ticketPrice = (duration * Fare.CAR_RATE_PER_HOUR * ratio);
+//                ticket.setPrice(duration * Fare.CAR_RATE_PER_HOUR * ratio);
+                // fonction qui permet d'avoir deux chiffres après la virgule pour le prix
+                ticket.setPrice(new BigDecimal(ticketPrice).setScale(2, RoundingMode.HALF_UP).doubleValue());
                 break;
             }
             case BIKE: {
-                ticket.setPrice(duration * Fare.BIKE_RATE_PER_HOUR * ratio);
+                double ticketPrice = (duration * Fare.BIKE_RATE_PER_HOUR * ratio);
+                ticket.setPrice(new BigDecimal(ticketPrice).setScale(2, RoundingMode.HALF_UP).doubleValue());
                 break;
             }
             default: throw new IllegalArgumentException("Unkown Parking Type");
         }
         if(duration < 0.5) {
             ticket.setPrice(0);
-            System.out.println("Ticket gratuit");
+            System.out.println("Free ticket");
         }
     }}

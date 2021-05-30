@@ -87,7 +87,6 @@ public class TicketDAO {
             dataBaseConfig.closeConnection(con);
         }
         return false;
-
     }
     //méthode qui sert a compter le nb de plaque d'immatriculation
     public int countNumberPlate(String vehicleRegNumber) {

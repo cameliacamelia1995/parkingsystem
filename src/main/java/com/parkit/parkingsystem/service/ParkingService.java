@@ -27,6 +27,10 @@ public class ParkingService {
         this.ticketDAO = ticketDAO;
     }
 
+    public static void setFareCalculatorService(FareCalculatorService fareCalculatorService) {
+        ParkingService.fareCalculatorService = fareCalculatorService;
+    }
+
     public void processIncomingVehicle() {
         try{
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
