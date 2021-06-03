@@ -14,11 +14,14 @@ public class FareCalculatorService {
         }
         long inHour = ticket.getInTime().getTime();
         long outHour = ticket.getOutTime().getTime();
-        double hours = (outHour - inHour)/1000/60; //difference between in and out dates in minutes
-        double duration = (double)hours/60; //converts duration into hours
+        //difference between in and out dates in minutes
+        double hours = (outHour - inHour)/1000/60;
+        //converts duration into hours
+        double duration = (double)hours/60;
 //
         double ratio;
-        boolean reduction = ticket.isRecurrentUsers(); //boolean si l'utilisateur est récurent
+        //boolean si l'utilisateur est récurent
+        boolean reduction = ticket.isRecurrentUsers();
         if(reduction) {
             ratio = 0.95;
         } else {
@@ -29,7 +32,7 @@ public class FareCalculatorService {
             case CAR: {
                 double ticketPrice = (duration * Fare.CAR_RATE_PER_HOUR * ratio);
 //                ticket.setPrice(duration * Fare.CAR_RATE_PER_HOUR * ratio);
-                // fonction qui permet d'avoir deux chiffres après la virgule pour le prix
+                //fonction qui permet d'avoir deux chiffres après la virgule pour le prix
                 ticket.setPrice(new BigDecimal(ticketPrice).setScale(2, RoundingMode.HALF_UP).doubleValue());
                 break;
             }

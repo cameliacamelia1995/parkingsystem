@@ -15,7 +15,7 @@ public class ParkingService {
 
     private static final Logger logger = LogManager.getLogger("ParkingService");
 
-    private static FareCalculatorService fareCalculatorService;
+    private FareCalculatorService fareCalculatorService;
 
     private InputReaderUtil inputReaderUtil;
     private ParkingSpotDAO parkingSpotDAO;
@@ -25,12 +25,9 @@ public class ParkingService {
         this.inputReaderUtil = inputReaderUtil;
         this.parkingSpotDAO = parkingSpotDAO;
         this.ticketDAO = ticketDAO;
+        this.fareCalculatorService = new FareCalculatorService();
     }
-
-    public static void setFareCalculatorService(FareCalculatorService fareCalculatorService) {
-        ParkingService.fareCalculatorService = fareCalculatorService;
-    }
-
+    // entrée du véhcicule
     public void processIncomingVehicle() {
         try{
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
@@ -57,12 +54,12 @@ public class ParkingService {
             logger.error("Unable to process incoming vehicle",e);
         }
     }
-
+    //obtenir la plaque d'immatriculation de la voiture
     private String getVehichleRegNumber() throws Exception {
         System.out.println("Please type the vehicle registration number and press enter key");
         return inputReaderUtil.readVehicleRegistrationNumber();
     }
-
+    // obtenir le prochain numéro de la place de parking si celle-ci est dispo
     public ParkingSpot getNextParkingNumberIfAvailable(){
         int parkingNumber=0;
         ParkingSpot parkingSpot = null;
@@ -81,7 +78,7 @@ public class ParkingService {
         }
         return parkingSpot;
     }
-
+    //obtenir le type de véhicule
     private ParkingType getVehichleType(){
         System.out.println("Please select vehicle type from menu");
         System.out.println("1 CAR");
@@ -100,13 +97,14 @@ public class ParkingService {
             }
         }
     }
-
+    // véhicule sortant
     public void processExitingVehicle() {
         try{
             String vehicleRegNumber = getVehichleRegNumber();
             Ticket ticket = ticketDAO.getTicket(vehicleRegNumber);
             Date outTime = new Date();
             ticket.setOutTime(outTime);
+            System.out.println(fareCalculatorService);
             fareCalculatorService.calculateFare(ticket);
             if(ticketDAO.updateTicket(ticket)) {
                 ParkingSpot parkingSpot = ticket.getParkingSpot();

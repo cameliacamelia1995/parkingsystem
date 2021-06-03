@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Date;
 
 public class FareCalculatorServiceTest {
-
     private static FareCalculatorService fareCalculatorService;
     private Ticket ticket;
 
@@ -141,7 +140,8 @@ public class FareCalculatorServiceTest {
     @DisplayName("Calculating a price for an entire day in the parking ")
     public void calculateFareBikeWithMoreThanADayParkingTime() {
         Date inTime = new Date();
-        inTime.setTime(System.currentTimeMillis() - (24 * 60 * 60 * 1000));//24 hours parking time should give 24 * parking fare per hour
+        //24 hours parking time should give 24 * parking fare per hour
+        inTime.setTime(System.currentTimeMillis() - (24 * 60 * 60 * 1000));
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
 
@@ -227,7 +227,8 @@ public class FareCalculatorServiceTest {
     @DisplayName("Price for car more than 1 hour")
     public void calculateFareCarWithMoreThanOneHourParkingTime() {
         Date inTime = new Date();
-        inTime.setTime(System.currentTimeMillis() - (90 * 60 * 1000));//45 minutes parking time should give 3/4th parking fare
+        //45 minutes parking time should give 3/4th parking fare
+        inTime.setTime(System.currentTimeMillis() - (90 * 60 * 1000));
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
 

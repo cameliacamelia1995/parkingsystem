@@ -14,35 +14,38 @@ import java.math.RoundingMode;
         }
 <span class="fc" id="L15">        long inHour = ticket.getInTime().getTime();</span>
 <span class="fc" id="L16">        long outHour = ticket.getOutTime().getTime();</span>
-<span class="fc" id="L17">        double hours = (outHour - inHour)/1000/60; //difference between in and out dates in minutes</span>
-<span class="fc" id="L18">        double duration = (double)hours/60; //converts duration into hours</span>
+        //difference between in and out dates in minutes
+<span class="fc" id="L18">        double hours = (outHour - inHour)/1000/60;</span>
+        //converts duration into hours
+<span class="fc" id="L20">        double duration = (double)hours/60;</span>
 //
         double ratio;
-<span class="fc" id="L21">        boolean reduction = ticket.isRecurrentUsers(); //boolean si l'utilisateur est récurent</span>
-<span class="fc bfc" id="L22" title="All 2 branches covered.">        if(reduction) {</span>
-<span class="fc" id="L23">            ratio = 0.95;</span>
+        //boolean si l'utilisateur est récurent
+<span class="fc" id="L24">        boolean reduction = ticket.isRecurrentUsers();</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if(reduction) {</span>
+<span class="fc" id="L26">            ratio = 0.95;</span>
         } else {
-<span class="fc" id="L25">            ratio = 1;</span>
-<span class="fc" id="L26">            System.out.println(&quot;Welcome back ! As a recurrent user of our parking lot, you'll benefit from a 5% discount&quot;);</span>
+<span class="fc" id="L28">            ratio = 1;</span>
+<span class="fc" id="L29">            System.out.println(&quot;Welcome back ! As a recurrent user of our parking lot, you'll benefit from a 5% discount&quot;);</span>
         }
-<span class="pc bpc" id="L28" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()){</span>
+<span class="pc bpc" id="L31" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()){</span>
             case CAR: {
-<span class="fc" id="L30">                double ticketPrice = (duration * Fare.CAR_RATE_PER_HOUR * ratio);</span>
+<span class="fc" id="L33">                double ticketPrice = (duration * Fare.CAR_RATE_PER_HOUR * ratio);</span>
 //                ticket.setPrice(duration * Fare.CAR_RATE_PER_HOUR * ratio);
-                // fonction qui permet d'avoir deux chiffres après la virgule pour le prix
-<span class="fc" id="L33">                ticket.setPrice(new BigDecimal(ticketPrice).setScale(2, RoundingMode.HALF_UP).doubleValue());</span>
-<span class="fc" id="L34">                break;</span>
+                //fonction qui permet d'avoir deux chiffres après la virgule pour le prix
+<span class="fc" id="L36">                ticket.setPrice(new BigDecimal(ticketPrice).setScale(2, RoundingMode.HALF_UP).doubleValue());</span>
+<span class="fc" id="L37">                break;</span>
             }
             case BIKE: {
-<span class="fc" id="L37">                double ticketPrice = (duration * Fare.BIKE_RATE_PER_HOUR * ratio);</span>
-<span class="fc" id="L38">                ticket.setPrice(new BigDecimal(ticketPrice).setScale(2, RoundingMode.HALF_UP).doubleValue());</span>
-<span class="fc" id="L39">                break;</span>
+<span class="fc" id="L40">                double ticketPrice = (duration * Fare.BIKE_RATE_PER_HOUR * ratio);</span>
+<span class="fc" id="L41">                ticket.setPrice(new BigDecimal(ticketPrice).setScale(2, RoundingMode.HALF_UP).doubleValue());</span>
+<span class="fc" id="L42">                break;</span>
             }
-<span class="nc" id="L41">            default: throw new IllegalArgumentException(&quot;Unkown Parking Type&quot;);</span>
+<span class="nc" id="L44">            default: throw new IllegalArgumentException(&quot;Unkown Parking Type&quot;);</span>
         }
-<span class="fc bfc" id="L43" title="All 2 branches covered.">        if(duration &lt; 0.5) {</span>
-<span class="fc" id="L44">            ticket.setPrice(0);</span>
-<span class="fc" id="L45">            System.out.println(&quot;Free ticket&quot;);</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if(duration &lt; 0.5) {</span>
+<span class="fc" id="L47">            ticket.setPrice(0);</span>
+<span class="fc" id="L48">            System.out.println(&quot;Free ticket&quot;);</span>
         }
-<span class="fc" id="L47">    }}</span>
+<span class="fc" id="L50">    }}</span>
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
