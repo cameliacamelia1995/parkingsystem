@@ -1,4 +1,28 @@
 -------------------------------------------------------------------------------
 Test set: com.parkit.parkingsystem.ParkingServiceTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.647 s - in com.parkit.parkingsystem.ParkingServiceTest
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 2.948 s <<< FAILURE! - in com.parkit.parkingsystem.ParkingServiceTest
+getVehicleTypeCarTest  Time elapsed: 2.756 s  <<< FAILURE!
+org.mockito.exceptions.verification.WantedButNotInvoked: 
+
+Wanted but not invoked:
+parkingSpotDAO.updateParking(
+    <any com.parkit.parkingsystem.model.ParkingSpot>
+);
+-> at com.parkit.parkingsystem.ParkingServiceTest.getVehicleTypeCarTest(ParkingServiceTest.java:167)
+Actually, there were zero interactions with this mock.
+
+	at com.parkit.parkingsystem.ParkingServiceTest.getVehicleTypeCarTest(ParkingServiceTest.java:167)
+
+processIncomingVehicle  Time elapsed: 0.149 s  <<< FAILURE!
+org.mockito.exceptions.verification.WantedButNotInvoked: 
+
+Wanted but not invoked:
+parkingSpotDAO.updateParking(
+    <any com.parkit.parkingsystem.model.ParkingSpot>
+);
+-> at com.parkit.parkingsystem.ParkingServiceTest.processIncomingVehicle(ParkingServiceTest.java:125)
+Actually, there were zero interactions with this mock.
+
+	at com.parkit.parkingsystem.ParkingServiceTest.processIncomingVehicle(ParkingServiceTest.java:125)
+
