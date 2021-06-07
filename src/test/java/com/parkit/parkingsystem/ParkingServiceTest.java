@@ -48,7 +48,7 @@ public class ParkingServiceTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("Get the next available spot for the car")
     public void getNextAvailableCarSpot() {
         try {
             ticket = new Ticket();
@@ -73,6 +73,7 @@ public class ParkingServiceTest {
     }
 
     @Test
+    @DisplayName("Get the next available spot for the bike")
     public void getNextAvailableBikeSpot() {
         try {
             ticket = new Ticket();
@@ -95,6 +96,7 @@ public class ParkingServiceTest {
     }
 
     @Test
+    @DisplayName("Vehicule entrance")
     public void processIncomingVehicleTest() {
         try {
             Ticket ticket = new Ticket();
@@ -119,6 +121,7 @@ public class ParkingServiceTest {
     }
 
     @Test
+    @DisplayName("Exiting vehicule")
     public void processExitingVehicleTest() {
         try {
             ticket = new Ticket();
@@ -141,6 +144,7 @@ public class ParkingServiceTest {
 
     }
     @Test
+    @DisplayName("Get the vehicle type CAR")
     public void getVehicleTypeCarTest() {
 
         ParkingService service = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -151,6 +155,7 @@ public class ParkingServiceTest {
     }
 
     @Test
+    @DisplayName("Get the vehicle type BIKE")
     public void getVehicleTypeBikeTest() {
 
         ParkingService service = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -160,6 +165,7 @@ public class ParkingServiceTest {
 
     }
     @Test
+    @DisplayName("Get the next number of the parking space if it is available")
     public void getNextParkingIfAvailableTest () {
 
         parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
