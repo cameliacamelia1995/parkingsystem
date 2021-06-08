@@ -10,105 +10,105 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
-<span class="nc" id="L13">public class TicketDAO {</span>
+<span class="fc" id="L13">public class TicketDAO {</span>
 
 <span class="fc" id="L15">    private static final Logger logger = LogManager.getLogger(&quot;TicketDAO&quot;);</span>
 
-<span class="nc" id="L17">    public DataBaseConfig dataBaseConfig = new DataBaseConfig();</span>
+<span class="fc" id="L17">    public DataBaseConfig dataBaseConfig = new DataBaseConfig();</span>
 
     public boolean saveTicket(Ticket ticket){
-<span class="nc" id="L20">        Connection con = null;</span>
+<span class="fc" id="L20">        Connection con = null;</span>
         try {
-<span class="nc" id="L22">            con = dataBaseConfig.getConnection();</span>
-<span class="nc" id="L23">            PreparedStatement ps = con.prepareStatement(DBConstants.SAVE_TICKET);</span>
+<span class="fc" id="L22">            con = dataBaseConfig.getConnection();</span>
+<span class="fc" id="L23">            PreparedStatement ps = con.prepareStatement(DBConstants.SAVE_TICKET);</span>
             //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
             //ps.setInt(1,ticket.getId());
-<span class="nc" id="L26">            ps.setInt(1,ticket.getParkingSpot().getId());</span>
-<span class="nc" id="L27">            ps.setString(2, ticket.getVehicleRegNumber());</span>
-<span class="nc" id="L28">            ps.setDouble(3, ticket.getPrice());</span>
-<span class="nc" id="L29">            ps.setTimestamp(4, new Timestamp(ticket.getInTime().getTime()));</span>
-<span class="nc bnc" id="L30" title="All 2 branches missed.">            ps.setTimestamp(5, (ticket.getOutTime() == null)?null: (new Timestamp(ticket.getOutTime().getTime())) );</span>
-<span class="nc" id="L31">            return ps.execute();</span>
+<span class="fc" id="L26">            ps.setInt(1,ticket.getParkingSpot().getId());</span>
+<span class="fc" id="L27">            ps.setString(2, ticket.getVehicleRegNumber());</span>
+<span class="fc" id="L28">            ps.setDouble(3, ticket.getPrice());</span>
+<span class="fc" id="L29">            ps.setTimestamp(4, new Timestamp(ticket.getInTime().getTime()));</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">            ps.setTimestamp(5, (ticket.getOutTime() == null)?null: (new Timestamp(ticket.getOutTime().getTime())) );</span>
+<span class="fc" id="L31">            return ps.execute();</span>
 <span class="nc" id="L32">        }catch (Exception ex){</span>
 <span class="nc" id="L33">            logger.error(&quot;Error fetching next available slot&quot;,ex);</span>
         }finally {
-<span class="nc" id="L35">            dataBaseConfig.closeConnection(con);</span>
-<span class="nc" id="L36">            return false;</span>
+<span class="pc" id="L35">            dataBaseConfig.closeConnection(con);</span>
+<span class="pc" id="L36">            return false;</span>
         }
     }
 
     public Ticket getTicket(String vehicleRegNumber) {
-<span class="nc" id="L41">        Connection con = null;</span>
-<span class="nc" id="L42">        Ticket ticket = null;</span>
+<span class="fc" id="L41">        Connection con = null;</span>
+<span class="fc" id="L42">        Ticket ticket = null;</span>
         try {
-<span class="nc" id="L44">            con = dataBaseConfig.getConnection();</span>
-<span class="nc" id="L45">            PreparedStatement ps = con.prepareStatement(DBConstants.GET_TICKET);</span>
+<span class="fc" id="L44">            con = dataBaseConfig.getConnection();</span>
+<span class="fc" id="L45">            PreparedStatement ps = con.prepareStatement(DBConstants.GET_TICKET);</span>
             //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
-<span class="nc" id="L47">            ps.setString(1,vehicleRegNumber);</span>
-<span class="nc" id="L48">            ResultSet rs = ps.executeQuery();</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">            if(rs.next()){</span>
-<span class="nc" id="L50">                ticket = new Ticket();</span>
-<span class="nc" id="L51">                ParkingSpot parkingSpot = new ParkingSpot(rs.getInt(1), ParkingType.valueOf(rs.getString(6)),false);</span>
-<span class="nc" id="L52">                ticket.setParkingSpot(parkingSpot);</span>
-<span class="nc" id="L53">                ticket.setId(rs.getInt(2));</span>
-<span class="nc" id="L54">                ticket.setVehicleRegNumber(vehicleRegNumber);</span>
-<span class="nc" id="L55">                ticket.setPrice(rs.getDouble(3));</span>
-<span class="nc" id="L56">                ticket.setInTime(rs.getTimestamp(4));</span>
-<span class="nc" id="L57">                ticket.setOutTime(rs.getTimestamp(5));</span>
-<span class="nc bnc" id="L58" title="All 2 branches missed.">                if (countNumberPlate(vehicleRegNumber)&gt; 1){ // Si plaque d'immatriculation est présente + d'une fois</span>
-<span class="nc" id="L59">                    ticket.setRecurrentUsers(true); //utilisateur récurrent</span>
+<span class="fc" id="L47">            ps.setString(1,vehicleRegNumber);</span>
+<span class="fc" id="L48">            ResultSet rs = ps.executeQuery();</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">            if(rs.next()){</span>
+<span class="fc" id="L50">                ticket = new Ticket();</span>
+<span class="fc" id="L51">                ParkingSpot parkingSpot = new ParkingSpot(rs.getInt(1), ParkingType.valueOf(rs.getString(6)),false);</span>
+<span class="fc" id="L52">                ticket.setParkingSpot(parkingSpot);</span>
+<span class="fc" id="L53">                ticket.setId(rs.getInt(2));</span>
+<span class="fc" id="L54">                ticket.setVehicleRegNumber(vehicleRegNumber);</span>
+<span class="fc" id="L55">                ticket.setPrice(rs.getDouble(3));</span>
+<span class="fc" id="L56">                ticket.setInTime(rs.getTimestamp(4));</span>
+<span class="fc" id="L57">                ticket.setOutTime(rs.getTimestamp(5));</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">                if (countNumberPlate(vehicleRegNumber)&gt; 1){ // Si plaque d'immatriculation est présente + d'une fois</span>
+<span class="fc" id="L59">                    ticket.setRecurrentUsers(true); //utilisateur récurrent</span>
 
                 }
 
             }
-<span class="nc" id="L64">            dataBaseConfig.closeResultSet(rs);</span>
-<span class="nc" id="L65">            dataBaseConfig.closePreparedStatement(ps);</span>
+<span class="fc" id="L64">            dataBaseConfig.closeResultSet(rs);</span>
+<span class="fc" id="L65">            dataBaseConfig.closePreparedStatement(ps);</span>
 <span class="nc" id="L66">        }catch (Exception ex){</span>
 <span class="nc" id="L67">            logger.error(&quot;Error fetching next available slot&quot;,ex);</span>
         }finally {
-<span class="nc" id="L69">            dataBaseConfig.closeConnection(con);</span>
-<span class="nc" id="L70">            return ticket;</span>
+<span class="pc" id="L69">            dataBaseConfig.closeConnection(con);</span>
+<span class="pc" id="L70">            return ticket;</span>
         }
     }
 
     public boolean updateTicket(Ticket ticket) {
-<span class="nc" id="L75">        Connection con = null;</span>
+<span class="fc" id="L75">        Connection con = null;</span>
         try {
-<span class="nc" id="L77">            con = dataBaseConfig.getConnection();</span>
-<span class="nc" id="L78">            PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_TICKET);</span>
-<span class="nc" id="L79">            ps.setDouble(1, ticket.getPrice());</span>
-<span class="nc" id="L80">            ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));</span>
-<span class="nc" id="L81">            ps.setInt(3,ticket.getId());</span>
-<span class="nc" id="L82">            ps.execute();</span>
-<span class="nc" id="L83">            return true;</span>
+<span class="fc" id="L77">            con = dataBaseConfig.getConnection();</span>
+<span class="fc" id="L78">            PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_TICKET);</span>
+<span class="fc" id="L79">            ps.setDouble(1, ticket.getPrice());</span>
+<span class="fc" id="L80">            ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));</span>
+<span class="fc" id="L81">            ps.setInt(3,ticket.getId());</span>
+<span class="fc" id="L82">            ps.execute();</span>
+<span class="fc" id="L83">            return true;</span>
 <span class="nc" id="L84">        }catch (Exception ex){</span>
 <span class="nc" id="L85">            logger.error(&quot;Error saving ticket info&quot;,ex);</span>
         }finally {
-<span class="nc" id="L87">            dataBaseConfig.closeConnection(con);</span>
+<span class="fc" id="L87">            dataBaseConfig.closeConnection(con);</span>
         }
 <span class="nc" id="L89">        return false;</span>
     }
     //méthode qui sert a compter le nb de plaque d'immatriculation
     public int countNumberPlate(String vehicleRegNumber) {
-<span class="nc" id="L93">        Connection con = null;</span>
-<span class="nc" id="L94">        int count = 0;</span>
+<span class="fc" id="L93">        Connection con = null;</span>
+<span class="fc" id="L94">        int count = 0;</span>
             try {
-<span class="nc" id="L96">                con = dataBaseConfig.getConnection();</span>
-<span class="nc" id="L97">                PreparedStatement ps = con.prepareStatement(DBConstants.COUNT_NUMBER_PLATE);</span>
-<span class="nc" id="L98">                ps.setString(1, vehicleRegNumber); //1 = premier paramètre</span>
-<span class="nc" id="L99">                ps.execute();</span>
-<span class="nc" id="L100">                ResultSet rs = ps.executeQuery();</span>
-<span class="nc bnc" id="L101" title="All 2 branches missed.">                if (rs.next()) {</span>
-<span class="nc" id="L102">                    count = rs.getInt(1); //1 = obtenir le premier champs en int</span>
+<span class="fc" id="L96">                con = dataBaseConfig.getConnection();</span>
+<span class="fc" id="L97">                PreparedStatement ps = con.prepareStatement(DBConstants.COUNT_NUMBER_PLATE);</span>
+<span class="fc" id="L98">                ps.setString(1, vehicleRegNumber); //1 = premier paramètre</span>
+<span class="fc" id="L99">                ps.execute();</span>
+<span class="fc" id="L100">                ResultSet rs = ps.executeQuery();</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">                if (rs.next()) {</span>
+<span class="fc" id="L102">                    count = rs.getInt(1); //1 = obtenir le premier champs en int</span>
                 }
-<span class="nc" id="L104">                dataBaseConfig.closeResultSet(rs);</span>
-<span class="nc" id="L105">                dataBaseConfig.closePreparedStatement(ps);</span>
+<span class="fc" id="L104">                dataBaseConfig.closeResultSet(rs);</span>
+<span class="fc" id="L105">                dataBaseConfig.closePreparedStatement(ps);</span>
 <span class="nc" id="L106">            }catch (Exception ex) {</span>
 <span class="nc" id="L107">                logger.error(&quot;Error saving ticket info&quot;,ex);</span>
             }finally {
-<span class="nc" id="L109">                dataBaseConfig.closeConnection(con);</span>
+<span class="fc" id="L109">                dataBaseConfig.closeConnection(con);</span>
             }
-<span class="nc" id="L111">        return count;</span>
+<span class="fc" id="L111">        return count;</span>
     }
         }
 

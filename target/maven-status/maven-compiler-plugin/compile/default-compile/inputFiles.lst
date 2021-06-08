@@ -1,6 +1,7 @@
 /Users/camelia95/Documents/IdeaProjects/parkingsystem/src/main/java/com/parkit/parkingsystem/constants/ParkingType.java
 /Users/camelia95/Documents/IdeaProjects/parkingsystem/src/main/java/com/parkit/parkingsystem/constants/Fare.java
 /Users/camelia95/Documents/IdeaProjects/parkingsystem/src/main/java/com/parkit/parkingsystem/constants/DBConstants.java
+/Users/camelia95/Documents/IdeaProjects/parkingsystem/src/main/java/com/parkit/parkingsystem/util/PropertiesConfig.java
 /Users/camelia95/Documents/IdeaProjects/parkingsystem/src/main/java/com/parkit/parkingsystem/dao/TicketDAO.java
 /Users/camelia95/Documents/IdeaProjects/parkingsystem/src/main/java/com/parkit/parkingsystem/service/FareCalculatorService.java
 /Users/camelia95/Documents/IdeaProjects/parkingsystem/src/main/java/com/parkit/parkingsystem/service/InteractiveShell.java

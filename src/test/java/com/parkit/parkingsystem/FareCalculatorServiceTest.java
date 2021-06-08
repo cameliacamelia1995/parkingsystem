@@ -86,7 +86,20 @@ public class FareCalculatorServiceTest {
         ticket.setParkingSpot(parkingSpot);
         assertThrows(IllegalArgumentException.class, () -> fareCalculatorService.calculateFare(ticket));
     }
+    @Test
+    @DisplayName("Entry time after outing ")
+    public void calculateFareCarWithFutureInTime() {
+        Date inTime = new Date();
+        inTime.setTime(System.currentTimeMillis() + (60 * 60 * 1000));
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
 
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setRecurrentUsers(false);
+        ticket.setParkingSpot(parkingSpot);
+        assertThrows(IllegalArgumentException.class, () -> fareCalculatorService.calculateFare(ticket));
+    }
     @Test
     @DisplayName("Price for bike less than 1 hour")
     public void calculateFareBikeWithLessThanOneHourParkingTime() {
@@ -258,8 +271,4 @@ public class FareCalculatorServiceTest {
     }
 
 }
-
-
-
-
 
