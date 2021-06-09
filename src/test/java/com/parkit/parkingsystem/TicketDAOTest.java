@@ -8,6 +8,7 @@ import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.model.Ticket;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -33,6 +34,7 @@ public class TicketDAOTest {
     }
 
     @Test
+    @DisplayName("MAJ du ticket pour la voiture dans la db")
     public void updateTicketCarTest() {
         Ticket ticket = new Ticket();
         Date inTime = new Date();
@@ -53,6 +55,7 @@ public class TicketDAOTest {
         assertTrue(ticketDAO.updateTicket(ticket));
     }
     @Test
+    @DisplayName("MAJ du ticket pour le vélo dans la db")
     public void updateTicketBikeTest() {
         Ticket ticket = new Ticket();
         Date inTime = new Date();
@@ -73,6 +76,7 @@ public class TicketDAOTest {
         assertTrue(ticketDAO.updateTicket(ticket));
     }
     @Test
+    @DisplayName("Obtenir le ticket dans la DB")
     public void getTicketTest() {
         Ticket ticket = new Ticket();
         Date inTime = new Date();

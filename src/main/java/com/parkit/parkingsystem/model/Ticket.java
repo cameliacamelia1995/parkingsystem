@@ -45,20 +45,21 @@ public class Ticket {
     }
 
     public Date getInTime() {
-        return inTime;
+        return inTime = inTime == null ? null : (Date) inTime.clone();
     }
 
     public void setInTime(Date inTime) {
-        this.inTime = inTime;
+        this.inTime = inTime == null ? null : (Date) inTime.clone();
     }
 
     public Date getOutTime() {
-        return outTime;
+        return outTime = outTime == null ? null : (Date) outTime.clone();
     }
 
     public void setOutTime(Date outTime) {
-        this.outTime = outTime;
+        this.outTime = outTime == null ? null : (Date) outTime.clone();
     }
+
     // déclaration de la méthode setRecurrentUsers pour dire si l'utilisation est récurrent
     public void setRecurrentUsers(boolean recurrentUsers) { this.recurrentUsers = recurrentUsers; }
 

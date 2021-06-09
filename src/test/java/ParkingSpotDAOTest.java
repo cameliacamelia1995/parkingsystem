@@ -1,5 +1,4 @@
 
-
 import com.parkit.parkingsystem.constants.ParkingType;
 import com.parkit.parkingsystem.dao.ParkingSpotDAO;
 import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
@@ -32,9 +31,9 @@ public class ParkingSpotDAOTest {
     }
 
     @Test
+    @DisplayName("Vérifier que le parking est mis à jour lors de la sortie d'une voiture et donc que la place de parking attribué est true")
     public void updateParkingSpotTest() {
         parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
-        parkingSpot.setId(1);
         parkingSpot.setParkingType(ParkingType.BIKE);
         parkingSpot.setAvailable(true);
         parkingSpot = new ParkingSpot(parkingSpot.getId(), parkingSpot.getParkingType(), parkingSpot.isAvailable());
@@ -46,10 +45,10 @@ public class ParkingSpotDAOTest {
     }
 
     @Test
+    @DisplayName("Vérifier qu'une place de parking est disponible")
     public void getNextAvailableSlotTest() {
         parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
         assertEquals(parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR), 1);
     }
-
 }
 

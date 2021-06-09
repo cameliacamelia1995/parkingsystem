@@ -28,12 +28,14 @@ public class TicketDAO {
             ps.setDouble(3, ticket.getPrice());
             ps.setTimestamp(4, new Timestamp(ticket.getInTime().getTime()));
             ps.setTimestamp(5, (ticket.getOutTime() == null)?null: (new Timestamp(ticket.getOutTime().getTime())) );
-            return ps.execute();
+            ps.execute();
+            ps.close();
+            return true;
         }catch (Exception ex){
             logger.error("Error fetching next available slot",ex);
+            return false;
         }finally {
             dataBaseConfig.closeConnection(con);
-            return false;
         }
     }
 
@@ -67,8 +69,9 @@ public class TicketDAO {
             logger.error("Error fetching next available slot",ex);
         }finally {
             dataBaseConfig.closeConnection(con);
-            return ticket;
+
         }
+        return ticket;
     }
 
     public boolean updateTicket(Ticket ticket) {
@@ -80,13 +83,14 @@ public class TicketDAO {
             ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));
             ps.setInt(3,ticket.getId());
             ps.execute();
+            ps.close();
             return true;
         }catch (Exception ex){
             logger.error("Error saving ticket info",ex);
+            return false;
         }finally {
             dataBaseConfig.closeConnection(con);
         }
-        return false;
     }
     //méthode qui sert a compter le nb de plaque d'immatriculation
     public int countNumberPlate(String vehicleRegNumber) {
