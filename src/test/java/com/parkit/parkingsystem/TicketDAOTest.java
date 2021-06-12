@@ -34,7 +34,7 @@ public class TicketDAOTest {
     }
 
     @Test
-    @DisplayName("MAJ du ticket pour la voiture dans la db")
+    @DisplayName("Update the ticket for the car in the DB")
     public void updateTicketCarTest() {
         Ticket ticket = new Ticket();
         Date inTime = new Date();
@@ -55,7 +55,7 @@ public class TicketDAOTest {
         assertTrue(ticketDAO.updateTicket(ticket));
     }
     @Test
-    @DisplayName("MAJ du ticket pour le vélo dans la db")
+    @DisplayName("Update the ticket for the bike in the DB")
     public void updateTicketBikeTest() {
         Ticket ticket = new Ticket();
         Date inTime = new Date();
@@ -76,7 +76,7 @@ public class TicketDAOTest {
         assertTrue(ticketDAO.updateTicket(ticket));
     }
     @Test
-    @DisplayName("Obtenir le ticket dans la DB")
+    @DisplayName("Get the ticket in the DB")
     public void getTicketTest() {
         Ticket ticket = new Ticket();
         Date inTime = new Date();

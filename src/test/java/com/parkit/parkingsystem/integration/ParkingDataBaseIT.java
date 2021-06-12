@@ -49,8 +49,8 @@ public class ParkingDataBaseIT {
 
     }
     @Test
+    @DisplayName("Test to check if car is saved in DB and sets parking spot unavailable")
     public void testParkingACar(){
-
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
         //TODO: check that a ticket is actualy saved in DB and Parking table is updated with availability
@@ -62,7 +62,7 @@ public class ParkingDataBaseIT {
     }
 
     @Test
-    @DisplayName("Test pour voir si le vélo est actuellement sauvegardé dans la DB et met sa place indisponible")
+    @DisplayName("Test to check if bike is saved in DB and sets parking spot unavailable")
     public void testParkingABike(){
 
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -76,7 +76,7 @@ public class ParkingDataBaseIT {
     }
 
     @Test
-    @DisplayName("Test pour voir si le prix et l'heure de sortie du véhicule sont enregistré dans la DB")
+    @DisplayName("Test to check if price & out time are saved in DB")
     public void testParkingLotExit(){
         //TODO: check that the fare generated and out time are populated correctly in the database
         testParkingACar();
@@ -94,9 +94,5 @@ public class ParkingDataBaseIT {
         assertEquals(true, ticket.getOutTime() != null);
         assertEquals(true, ticket.getPrice() >= 0);
 
-
-
-
     }
-
 }
