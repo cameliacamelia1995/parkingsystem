@@ -1,0 +1,5 @@
+
+com.parkit.parkingsystem
+com.parkit.parkingsystem.integration
+com.parkit.parkingsystem.integration.config
+com.parkit.parkingsystem.integration.service

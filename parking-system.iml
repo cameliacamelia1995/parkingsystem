@@ -29,7 +29,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy:1.10.15" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy-agent:1.10.15" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:3.1" level="project" />
-    <orderEntry type="library" name="Maven: org.jacoco:jacoco-maven-plugin:maven-plugin:0.8.5" level="project" />
+    <orderEntry type="library" name="Maven: org.jacoco:jacoco-maven-plugin:maven-plugin:0.8.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-api:3.0" level="project" />
     <orderEntry type="library" name="Maven: org.sonatype.sisu:sisu-inject-plexus:1.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.sonatype.sisu:sisu-inject-bean:1.4.2" level="project" />
@@ -54,37 +54,13 @@
     <orderEntry type="library" name="Maven: classworlds:classworlds:1.1-alpha-2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.reporting:maven-reporting-api:3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.doxia:doxia-sink-api:1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.reporting:maven-reporting-impl:2.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-project:2.0.10" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-profile:2.0.10" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-artifact-manager:2.0.10" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-registry:2.0.10" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.doxia:doxia-core:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.doxia:doxia-logging-api:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: xerces:xercesImpl:2.8.1" level="project" />
-    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
-    <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:3.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.doxia:doxia-site-renderer:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.doxia:doxia-decoration-model:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.doxia:doxia-module-xhtml:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.doxia:doxia-module-fml:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-i18n:1.0-beta-7" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-velocity:1.1.7" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.5" level="project" />
-    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2" level="project" />
-    <orderEntry type="library" name="Maven: commons-validator:commons-validator:1.2.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.7.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-digester:commons-digester:1.6" level="project" />
-    <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.0.4" level="project" />
-    <orderEntry type="library" name="Maven: oro:oro:2.0.8" level="project" />
-    <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.0.b2" level="project" />
-    <orderEntry type="library" name="Maven: org.jacoco:org.jacoco.agent:runtime:0.8.5" level="project" />
-    <orderEntry type="library" name="Maven: org.jacoco:org.jacoco.core:0.8.5" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm:7.2" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-commons:7.2" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:7.2" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:7.2" level="project" />
-    <orderEntry type="library" name="Maven: org.jacoco:org.jacoco.report:0.8.5" level="project" />
+    <orderEntry type="library" name="Maven: org.jacoco:org.jacoco.agent:runtime:0.8.7" level="project" />
+    <orderEntry type="library" name="Maven: org.jacoco:org.jacoco.core:0.8.7" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm:9.1" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-commons:9.1" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:9.1" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:9.1" level="project" />
+    <orderEntry type="library" name="Maven: org.jacoco:org.jacoco.report:0.8.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-assembly-plugin:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-artifact:3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.0" level="project" />

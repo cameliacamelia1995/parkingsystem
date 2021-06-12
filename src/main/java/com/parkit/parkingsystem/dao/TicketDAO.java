@@ -36,15 +36,17 @@ public class TicketDAO {
             return false;
         }finally {
             dataBaseConfig.closeConnection(con);
+            return false;
         }
     }
 
     public Ticket getTicket(String vehicleRegNumber) {
-        Connection con = null;
-        Ticket ticket = null;
-        try {
-            con = dataBaseConfig.getConnection();
-            PreparedStatement ps = con.prepareStatement(DBConstants.GET_TICKET);
+            Connection con = null;
+            Ticket ticket = null;
+            PreparedStatement ps = null;
+            try {
+                con = dataBaseConfig.getConnection();
+                ps = con.prepareStatement(DBConstants.GET_TICKET);
             //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
             ps.setString(1,vehicleRegNumber);
             ResultSet rs = ps.executeQuery();
@@ -76,9 +78,10 @@ public class TicketDAO {
 
     public boolean updateTicket(Ticket ticket) {
         Connection con = null;
+        PreparedStatement ps = null;
         try {
             con = dataBaseConfig.getConnection();
-            PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_TICKET);
+            ps = con.prepareStatement(DBConstants.UPDATE_TICKET);
             ps.setDouble(1, ticket.getPrice());
             ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));
             ps.setInt(3,ticket.getId());
@@ -95,13 +98,15 @@ public class TicketDAO {
     //méthode qui sert a compter le nb de plaque d'immatriculation
     public int countNumberPlate(String vehicleRegNumber) {
         Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         int count = 0;
             try {
                 con = dataBaseConfig.getConnection();
-                PreparedStatement ps = con.prepareStatement(DBConstants.COUNT_NUMBER_PLATE);
+                ps = con.prepareStatement(DBConstants.COUNT_NUMBER_PLATE);
                 ps.setString(1, vehicleRegNumber); //1 = premier paramètre
                 ps.execute();
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
                 if (rs.next()) {
                     count = rs.getInt(1); //1 = obtenir le premier champs en int
                 }
@@ -115,5 +120,3 @@ public class TicketDAO {
         return count;
     }
         }
-
-

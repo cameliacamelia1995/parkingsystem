@@ -17,8 +17,7 @@ public class DataBaseTestConfig extends DataBaseConfig {
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         logger.info("Create DB connection");
         Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/test?serverTimezone=UTC","root","rootroot");
-
+        return DriverManager.getConnection(url,user,password);
 
     }
 

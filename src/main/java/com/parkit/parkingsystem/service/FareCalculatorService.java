@@ -15,7 +15,7 @@ public class FareCalculatorService {
         long inHour = ticket.getInTime().getTime();
         long outHour = ticket.getOutTime().getTime();
         //difference between in and out dates in minutes
-        double hours = (outHour - inHour)/1000/60;
+        long hours = (outHour - inHour)/1000/60;
         //converts duration into hours
         double duration = (double)hours/60;
 //
