@@ -49,7 +49,7 @@ public class ParkingDataBaseIT {
 
     }
     @Test
-    @DisplayName("Test to check if car is saved in DB and sets parking spot unavailable")
+    @DisplayName("Test to check if carpa is saved in DB and sets parking spot unavailable")
     public void testParkingACar(){
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);

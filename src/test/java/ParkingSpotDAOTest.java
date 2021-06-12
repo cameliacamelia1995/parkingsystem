@@ -31,6 +31,7 @@ public class ParkingSpotDAOTest {
     }
 
     @Test
+    @DisplayName("check if parking is updated when a vehicule exits and parking spot is set available")
     public void updateParkingSpotTest() {
         parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
         parkingSpot.setParkingType(ParkingType.BIKE);
@@ -44,6 +45,7 @@ public class ParkingSpotDAOTest {
     }
 
     @Test
+    @DisplayName("check if parking slot is available")
     public void getNextAvailableSlotTest() {
         parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
         assertEquals(parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR), 1);
