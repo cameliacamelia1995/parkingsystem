@@ -15,7 +15,7 @@ import java.math.RoundingMode;
 <span class="fc" id="L15">        long inHour = ticket.getInTime().getTime();</span>
 <span class="fc" id="L16">        long outHour = ticket.getOutTime().getTime();</span>
         //difference between in and out dates in minutes
-<span class="fc" id="L18">        double hours = (outHour - inHour)/1000/60;</span>
+<span class="fc" id="L18">        long hours = (outHour - inHour)/1000/60;</span>
         //converts duration into hours
 <span class="fc" id="L20">        double duration = (double)hours/60;</span>
 //

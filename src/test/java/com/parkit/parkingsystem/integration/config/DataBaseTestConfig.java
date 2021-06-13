@@ -8,8 +8,9 @@ import org.apache.logging.log4j.Logger;
 import java.sql.*;
 
 public class DataBaseTestConfig extends DataBaseConfig {
+
     PropertiesConfig properties = new PropertiesConfig(System.getProperties());
-    String url =properties.getProperty("testurl");
+    String url = properties.getProperty("testurl");
     String user = properties.getProperty("user");
     String password = properties.getProperty("password");
     private static final Logger logger = LogManager.getLogger("DataBaseTestConfig");

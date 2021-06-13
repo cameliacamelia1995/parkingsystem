@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: ParkingSpotDAOTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.792 s <<< FAILURE! - in ParkingSpotDAOTest
-getNextAvailableSlotTest  Time elapsed: 0.075 s  <<< FAILURE!
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.62 s <<< FAILURE! - in ParkingSpotDAOTest
+getNextAvailableSlotTest  Time elapsed: 0.079 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <-1> but was: <1>
 	at ParkingSpotDAOTest.getNextAvailableSlotTest(ParkingSpotDAOTest.java:51)
 

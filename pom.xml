@@ -174,7 +174,7 @@
                 <version>3.0.5</version>
                 <configuration>
                     <xmlOutput>true</xmlOutput>
-                    <excludeFilterFile>/Users/camelia95/Documents/IdeaProjects/parkingsystem/target/exclude.xml  </excludeFilterFile>
+                    <excludeFilterFile>${project.build.outputDirectory}/exclude.xml</excludeFilterFile>
                 </configuration>
             </plugin>
         </plugins>
