@@ -10,7 +10,7 @@ public class PropertiesConfig {
 
     public PropertiesConfig(Properties properties) {
 
-        String appConfigPath = "src\\main\\resources\\config.properties";
+        String appConfigPath = "src/main/resources/config.properties";
         try {
             FileInputStream in = new FileInputStream(appConfigPath);
             this.propertiesOfApp.load(in);

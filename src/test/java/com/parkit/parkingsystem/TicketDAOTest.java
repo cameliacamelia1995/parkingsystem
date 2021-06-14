@@ -50,9 +50,10 @@ public class TicketDAOTest {
         Date outTime = new Date();
         ticket.setOutTime(outTime);
         ticket.setPrice(1);
-        ticketDAO.updateTicket(ticket);
+       boolean t = ticketDAO.updateTicket(ticket);
 
-        assertTrue(ticketDAO.updateTicket(ticket));
+
+        assertTrue(t);
     }
     @Test
     @DisplayName("Update the ticket for the bike in the DB")
