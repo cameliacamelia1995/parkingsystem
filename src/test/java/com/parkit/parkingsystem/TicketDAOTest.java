@@ -15,6 +15,9 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
+/**
+ * TicketDAO test will check and update the ticket in the DB.
+ */
 public class TicketDAOTest {
 
     private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();

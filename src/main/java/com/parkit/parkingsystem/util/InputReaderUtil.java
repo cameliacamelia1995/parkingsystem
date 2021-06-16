@@ -5,11 +5,18 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
+/**
+ * Input reader util class is used to read selection and input from users.
+ */
+
 public class InputReaderUtil {
 
     private static Scanner scan = new Scanner(System.in);
     private static final Logger logger = LogManager.getLogger("InputReaderUtil");
 
+    /**
+     * @return the selection than the user made.
+     */
     public int readSelection() {
         try {
             int input = Integer.parseInt(scan.nextLine());
@@ -21,6 +28,10 @@ public class InputReaderUtil {
         }
     }
 
+    /**
+     * @throws Exception
+     * @return the registration number of user's vehicle.
+     */
     public String readVehicleRegistrationNumber() throws Exception {
         try {
             String vehicleRegNumber= scan.nextLine();

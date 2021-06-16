@@ -20,6 +20,11 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+/**
+ * <p> This class contains integration test when the vehicle is saved in DB when the parking spot is unavailable and
+ * if the price & out time are saved in DB. </p>
+ *
+ */
 public class ParkingDataBaseIT {
 
     private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
@@ -49,7 +54,7 @@ public class ParkingDataBaseIT {
 
     }
     @Test
-    @DisplayName("Test to check if carpa is saved in DB and sets parking spot unavailable")
+    @DisplayName("Test to check if car is saved in DB and sets parking spot unavailable")
     public void testParkingACar(){
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
@@ -57,7 +62,6 @@ public class ParkingDataBaseIT {
         Ticket ticket = ticketDAO.getTicket("ABCDEF");
         parkingService.processIncomingVehicle();
 
-       //assertEquals(1,parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
         assertFalse(parkingSpot.isAvailable());
     }
 
@@ -71,7 +75,6 @@ public class ParkingDataBaseIT {
         Ticket ticket = ticketDAO.getTicket("ABCDEF");
         parkingService.processIncomingVehicle();
 
-        //assertEquals(1,parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
         assertFalse(parkingSpot.isAvailable());
     }
 

@@ -11,6 +11,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Date;
 
+/**
+ * Parking service class is used to know some information about the parking service.
+ */
 public class ParkingService {
 
     private static final Logger logger = LogManager.getLogger("ParkingService");
@@ -27,7 +30,15 @@ public class ParkingService {
         this.ticketDAO = ticketDAO;
         this.fareCalculatorService = new FareCalculatorService();
     }
-    // entrée du véhcicule
+
+    /**
+     *
+     * Process incoming vehicle method is used to know how the vehicle entry operate.
+     * First we need to know the next available parking spot.
+     * We get the vehicle reg number and update the parking spot unavailable.
+     * Then we update the parking in the DB.
+     * We create a new ticket with all necessary information and we save the ticket in the DB.
+     */
     public void processIncomingVehicle() {
         try{
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
@@ -54,12 +65,19 @@ public class ParkingService {
             logger.error("Unable to process incoming vehicle",e);
         }
     }
-    //obtenir la plaque d'immatriculation de la voiture
+
+    //get the car license plate
     private String getVehichleRegNumber() throws Exception {
         System.out.println("Please type the vehicle registration number and press enter key");
         return inputReaderUtil.readVehicleRegistrationNumber();
     }
-    // obtenir le prochain numéro de la place de parking si celle-ci est dispo
+
+    /**
+     *
+     * Get the next parking number if available method is used to know if this one is available.
+     * @return parking spot
+     */
+
     public ParkingSpot getNextParkingNumberIfAvailable(){
         int parkingNumber=0;
         ParkingSpot parkingSpot = null;
@@ -78,7 +96,12 @@ public class ParkingService {
         }
         return parkingSpot;
     }
-    //obtenir le type de véhicule
+
+    /**
+     *
+     * Get vehicle type method is used to know what's vehicle type the user chose.
+     * @return parking type
+     */
     public ParkingType getVehichleType(){
         System.out.println("Please select vehicle type from menu");
         System.out.println("1 CAR");
@@ -97,7 +120,14 @@ public class ParkingService {
             }
         }
     }
-    // véhicule sortant
+
+    /**
+     *
+     * <p> Process exiting vehicle method is used when the vehicle leave the parking spot then we get
+     * the ticket with vehicle registration number, the out time is added, the price is generates and the information
+     * are update in the DB. </p>
+     *
+     */
     public void processExitingVehicle() {
         try{
             String vehicleRegNumber = getVehichleRegNumber();
@@ -119,7 +149,5 @@ public class ParkingService {
             logger.error("Unable to process exiting vehicle",e);
         }
     }
-
-
     }
 

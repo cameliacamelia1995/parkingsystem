@@ -21,6 +21,9 @@ import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * Parking service test class will test and check information about the parking service and update that in the DB.
+ */
 @ExtendWith(MockitoExtension.class)
 public class ParkingServiceTest {
 
@@ -136,7 +139,7 @@ public class ParkingServiceTest {
         }
         parkingService.processExitingVehicle();
 
-        // On verifie que le parking est MAJ au moins 1fois avec mockito quand parkingspotDAO est appelé
+        // We check that the parking lot is updated at least once with mockito when parkingspotDAO is called
         verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
         verify(ticketDAO, Mockito.times(1)).updateTicket(any(Ticket.class));
         verify(ticketDAO, Mockito.times(1)).getTicket(anyString());
@@ -159,7 +162,7 @@ public class ParkingServiceTest {
         }
         parkingService.processExitingVehicle();
 
-        // On verifie que le parking est MAJ au moins 1fois avec mockito quand parkingspotDAO est appelé
+        // We check that the parking lot is updated at least once with mockito when parkingspotDAO is called
         verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
         verify(ticketDAO, Mockito.times(1)).updateTicket(any(Ticket.class));
         verify(ticketDAO, Mockito.times(1)).getTicket(anyString());

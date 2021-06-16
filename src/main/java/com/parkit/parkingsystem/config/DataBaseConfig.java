@@ -5,6 +5,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+/**
+ * @author camelia
+ * Data base config class is used for get the connection with SQL.
+ */
 
 public class DataBaseConfig {
     PropertiesConfig properties = new PropertiesConfig(System.getProperties());

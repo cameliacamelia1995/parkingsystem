@@ -14,6 +14,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
+/**
+ * @author camelia
+ * Fare Calculator service test class will test many situation during the calculation of the fare price for the parking.
+ */
+
 public class FareCalculatorServiceTest {
     private static FareCalculatorService fareCalculatorService;
     private Ticket ticket;
@@ -269,6 +274,5 @@ public class FareCalculatorServiceTest {
         assertEquals(1.50, ticket.getPrice());
 
     }
-
 }
 

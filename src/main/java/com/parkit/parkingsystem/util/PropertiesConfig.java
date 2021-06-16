@@ -23,5 +23,4 @@ public class PropertiesConfig {
     public String getProperty(String key) {
         return this.propertiesOfApp.getProperty(key);
     }
-
 }

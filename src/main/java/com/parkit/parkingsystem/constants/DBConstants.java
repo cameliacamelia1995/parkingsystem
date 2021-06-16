@@ -1,4 +1,7 @@
 package com.parkit.parkingsystem.constants;
+/**
+ * DB constants class contains SQL command to execute.
+ */
 
 public class DBConstants {
 

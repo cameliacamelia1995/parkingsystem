@@ -10,12 +10,22 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
+/**
+ *
+ * Ticket DAO class is used for save, get and update the ticket in DB.
+ */
+
 public class TicketDAO {
 
     private static final Logger logger = LogManager.getLogger("TicketDAO");
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
-
+/**
+ *
+ * @param ticket
+ * This method used to save ticket in DB with the SQL queries.
+ * @return boolean.
+ */
     public boolean saveTicket(Ticket ticket){
         Connection con = null;
         try {
@@ -40,6 +50,13 @@ public class TicketDAO {
         }
     }
 
+    /**
+     *
+     * @param vehicleRegNumber
+     * <p>This method contains the SQL queries for get the ticket information in DB and the vehicle reg number
+     *to be recognize in the DB</p>
+     * @return ticket
+     */
     public Ticket getTicket(String vehicleRegNumber) {
             Connection con = null;
             Ticket ticket = null;
@@ -59,8 +76,8 @@ public class TicketDAO {
                 ticket.setPrice(rs.getDouble(3));
                 ticket.setInTime(rs.getTimestamp(4));
                 ticket.setOutTime(rs.getTimestamp(5));
-                if (countNumberPlate(vehicleRegNumber)> 1){ // Si plaque d'immatriculation est présente + d'une fois
-                    ticket.setRecurrentUsers(true); //utilisateur récurrent
+                if (countNumberPlate(vehicleRegNumber)> 1){ // If vehicle reg number is present more than one
+                    ticket.setRecurrentUsers(true); // Recurrent User
 
                 }
 
@@ -76,6 +93,12 @@ public class TicketDAO {
         return ticket;
     }
 
+    /**
+     *
+     * @param ticket
+     * This method update ticket will add time, price and ID and the ticket will execute SQL queries.
+     * @return boolean
+     */
     public boolean updateTicket(Ticket ticket) {
         Connection con = null;
         PreparedStatement ps = null;
@@ -95,7 +118,13 @@ public class TicketDAO {
             dataBaseConfig.closeConnection(con);
         }
     }
-    //méthode qui sert a compter le nb de plaque d'immatriculation
+
+    /**
+     *
+     * @param vehicleRegNumber
+     * This method is used to count the number of vehicle reg number already know in DB.
+     * @return count
+     */
     public int countNumberPlate(String vehicleRegNumber) {
         Connection con = null;
         PreparedStatement ps = null;

@@ -11,11 +11,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * @author camelia
+ * Parking spot DAO class is used for give the next available slot and update the result in the DB.
+ */
 public class ParkingSpotDAO {
     private static final Logger logger = LogManager.getLogger("ParkingSpotDAO");
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
+    /**
+     *
+     * @param parkingType
+     * This method give the next available slot in parking.
+     * @return result as the next number of available slot.
+     */
     public int getNextAvailableSlot(ParkingType parkingType){
         Connection con = null;
         int result=-1;
@@ -36,9 +46,13 @@ public class ParkingSpotDAO {
         }
         return result;
     }
-
+    /**
+     *
+     * @param parkingSpot
+     * This method update the availability for that parking slot in DB.
+     * @return boolean.
+     */
     public boolean updateParking(ParkingSpot parkingSpot){
-        //update the availability fo that parking slot
         Connection con = null;
         try {
             con = dataBaseConfig.getConnection();
