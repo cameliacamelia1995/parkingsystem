@@ -58,7 +58,6 @@ public class ParkingDataBaseIT {
     public void testParkingACar(){
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
-        //TODO: check that a ticket is actualy saved in DB and Parking table is updated with availability
         Ticket ticket = ticketDAO.getTicket("ABCDEF");
         parkingService.processIncomingVehicle();
 
@@ -71,7 +70,6 @@ public class ParkingDataBaseIT {
 
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
-        //TODO: check that a ticket is actualy saved in DB and Parking table is updated with availability
         Ticket ticket = ticketDAO.getTicket("ABCDEF");
         parkingService.processIncomingVehicle();
 
@@ -81,7 +79,6 @@ public class ParkingDataBaseIT {
     @Test
     @DisplayName("Test to check if price & out time are saved in DB")
     public void testParkingLotExit(){
-        //TODO: check that the fare generated and out time are populated correctly in the database
         testParkingACar();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         Ticket ticket = ticketDAO.getTicket("ABCDEF");

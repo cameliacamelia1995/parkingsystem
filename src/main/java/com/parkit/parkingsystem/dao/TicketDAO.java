@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import java.sql.*;
 
 /**
- *
  * Ticket DAO class is used for save, get and update the ticket in DB.
  */
 
@@ -53,8 +52,8 @@ public class TicketDAO {
     /**
      *
      * @param vehicleRegNumber
-     * <p>This method contains the SQL queries for get the ticket information in DB and the vehicle reg number
-     *to be recognize in the DB</p>
+     * <p>This method contains the SQL queries to get the ticket information in DB and the vehicle reg number
+     * to be recognized in the DB </p>
      * @return ticket
      */
     public Ticket getTicket(String vehicleRegNumber) {
